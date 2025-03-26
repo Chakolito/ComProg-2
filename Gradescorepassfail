@@ -1,0 +1,50 @@
+import java.util.Scanner;  
+import java.util.InputMismatchException; 
+
+class grade_pass_or_fail
+{
+    public static void main(String[] args)
+    {
+        Scanner scan = new Scanner(System.in); 
+        String name = "";
+        int grade = -1;
+
+        System.out.println("Enter name: ");
+        name = scan.nextLine();
+
+        while (true) 
+        {
+            try
+            {
+                System.out.println("Enter grade (0-100): ");
+                grade = scan.nextInt();
+                
+                if (grade < 0 || grade > 100) 
+                {
+                    System.out.println("Error: Grade must be between 0 and 100.");
+                    continue;
+                }
+                break; 
+            } 
+            catch (InputMismatchException e) 
+            {
+                System.out.println("Error: Invalid Input. Please enter a whole number.");
+                scan.next();
+            }
+        }
+
+        String gradescore;
+        if (grade < 59)
+        {
+            gradescore = "You failed.";
+        } 
+        else 
+        {
+            gradescore = "You Passed.";
+        }
+
+        System.out.println("Hello " + name + "! " + gradescore + "!");
+
+        scan.close();
+    }
+}
